@@ -1,0 +1,320 @@
+<div class="container-fluid mt-3">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="card" style="border: none;">
+                        <div class="card-body p-0"> <img style="border-radius: 10px;"
+                                [src]="carDetails?.imageUrl">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <i class="fa fa-star" aria-hidden="true"></i> 
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <p> {{carDetails?.brand}} {{carDetails?.name}}<small *ngFor="let item of carDetails?.zoomCarAccessoriess"> {{item.accessoriesTitle}}
+                        </small></p> 
+                        </div>
+                    </div>
+                   
+                </div>
+            </div>
+            <div class="row pt-2">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <h6>From</h6>
+                                    <p>{{carDetails?.registeredOn | date:'dd-MM-yyyy'}}
+                                       </p>
+                                       <p>Owner contact</p>
+                                </div>
+                                <div class="col-md-2">
+                                    <i class="bi bi-arrow-right"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"/>
+                                      </svg></i>
+                                </div>
+                                <div class="col-md-5 text-end">
+                                    <h6>To</h6>
+                                    <p>Wed, 22 Nov, 08:00 AM
+                                       </p>
+                                       <p> M. Wazalwar Driving School</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row pt-2">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4>About the car</h4>
+                            <p>Easy to ride and comfortable for 4 peoples for long drives good music and noise free car</p>
+                            <div class="row">
+                                <div class="col-md-3 pt-2">
+                                    <i class="fa fa-car" aria-hidden="true"></i>  Full boot space
+                                </div>
+                                <div class="col-md-3 pt-2">
+                                    <i class="fa fa-car" aria-hidden="true"></i> Bluetooth
+                                </div>
+                                <div class="col-md-3 pt-2">
+                                    <i class="fa fa-car" aria-hidden="true"></i> Toolkit
+                                </div>
+                                <div class="col-md-3 pt-2">
+                                    <i class="fa fa-car" aria-hidden="true"></i>  Air Conditioning
+                                </div>
+
+                                <div class="col-md-3 pt-2">
+                                    <i class="fa fa-car" aria-hidden="true"></i>  Music System
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          
+            
+        </div>
+        <div class="col-md-4 mt-3">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4>Booking Details</h4>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label for="">From Location</label>
+                                    <select [(ngModel)]="bookingObj.fromLocationId" name="fromLocation" class="form-control" id="">
+                                        <option value="">Pick up location</option>
+                                        <option *ngFor="let location of locations" [value]="location.locationId">{{location.title}}</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="">To Location</label>
+                                    <select [(ngModel)]="bookingObj.toLocationId" name="fromLocation" class="form-control" id="">
+                                        <option value="">Drop location</option>
+                                        <option *ngFor="let location of locations" [value]="location.locationId">{{location.title}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label for="">Date of Travel</label>
+                                    <input [(ngModel)]="bookingObj.travelDate" type="date" class="form-control">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="">Travel start time</label>
+                                    <input [(ngModel)]="bookingObj.startTime" type="text" class="form-control">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label for="">Start Address</label>
+                                    <input type="text" [(ngModel)]="bookingObj.pickupAddress" cols="30" rows="10" class="form-control">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="">Alternate contact number</label>
+                                    <input [(ngModel)]="bookingObj.alternateContactNo" type="text" class="form-control">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <button class="btn btn-success" (click)="createNewBooking()">Book Now</button>
+                                </div>
+                            </div>
+                            <!-- <div class="bg-secondary text-white p-2 mt-2" style="border-radius: 10px;">
+                                <div class="row">
+                                    <div class="col-3">
+                                        <i class="fa fa-user" aria-hidden="true"></i>  FIRST
+                                    </div>
+                                    <div class="col-9">
+                                        10% Off
+                                    </div>
+                                </div>
+                                <div class="row pt-1">
+                                    <div class="col-12">
+                                        <p>
+                                            Only For New Customer get 10% off on Total Amount
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="bg-secondary text-white p-2 mt-2" style="border-radius: 10px;">
+                                <div class="row">
+                                    <div class="col-3">
+                                        <i class="fa fa-user" aria-hidden="true"></i>  FIRST
+                                    </div>
+                                    <div class="col-9">
+                                        10% Off
+                                    </div>
+                                </div>
+                                <div class="row pt-1">
+                                    <div class="col-12">
+                                        <p>
+                                            Only For New Customer get 10% off on Total Amount
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="bg-secondary text-white p-2 mt-2" style="border-radius: 10px;">
+                                <div class="row">
+                                    <div class="col-3">
+                                        <i class="fa fa-user" aria-hidden="true"></i>  FIRST
+                                    </div>
+                                    <div class="col-9">
+                                        10% Off
+                                    </div>
+                                </div>
+                                <div class="row pt-1">
+                                    <div class="col-12">
+                                        <p>
+                                            Only For New Customer get 10% off on Total Amount
+                                        </p>
+                                    </div>
+                                </div>
+                            </div> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col-md-3">
+            <div class="card mb-3">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-2">
+                            <div class="round">
+                                S
+                            </div> 
+                        </div>
+                        <div class="col-md-10 tex">
+                            Sachin Ramesh Tendulkar
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star-o" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <p>Dear ZoomCar Customer Support I hope this message finds you well I am writing to express my concern and…
+                                 </p>
+                                 <p>1 Week Ago</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card mb-3">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-2">
+                            <div class="round">
+                                S
+                            </div> 
+                        </div>
+                        <div class="col-md-10 tex">
+                            Sachin Ramesh Tendulkar
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star-o" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <p>Dear ZoomCar Customer Support I hope this message finds you well I am writing to express my concern and…
+                                 </p>
+                                 <p>1 Week Ago</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card mb-3">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-2">
+                            <div class="round">
+                                S
+                            </div> 
+                        </div>
+                        <div class="col-md-10 tex">
+                            Sachin Ramesh Tendulkar
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star-o" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <p>Dear ZoomCar Customer Support I hope this message finds you well I am writing to express my concern and…
+                                 </p>
+                                 <p>1 Week Ago</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card mb-3">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-2">
+                            <div class="round">
+                                S
+                            </div> 
+                        </div>
+                        <div class="col-md-10 tex">
+                            Sachin Ramesh Tendulkar
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star-o" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <p>Dear ZoomCar Customer Support I hope this message finds you well I am writing to express my concern and…
+                                 </p>
+                                 <p>1 Week Ago</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</div>

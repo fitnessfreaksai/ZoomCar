@@ -1,0 +1,105 @@
+<div class="row">
+    <div class="col-md-12 text-end">
+        <button class="btn btn-success" (click)="open()">Add New</button>
+    </div>
+</div>
+<div class="car-list-home-container">
+    <div class="row car-list-home">
+        <div class="col-md-3" *ngFor="let car of carList">
+            <app-car-card [carData]="car"></app-car-card>
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="newCarModal">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Register</h4>
+          <button type="button" class="btn-close" (click)="close()" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col-md-7">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label for="">Brand</label>
+                            <input type="text" [(ngModel)]="carObj.brand" class="form-control">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="">Model Name</label>
+                            <input type="text" [(ngModel)]="carObj.name" class="form-control">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label for="">Pricing</label>
+                            <input type="number" [(ngModel)]="carObj.pricing" class="form-control">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="">pricing Description</label>
+                            <input type="text" [(ngModel)]="carObj.pricingDescription" class="form-control">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label for="">select your location</label>
+                            <select class="form-control" [(ngModel)]="carObj.locationId" name="" id="">
+                                <option value="">your location</option>
+                                <option [value]="location.locationId" *ngFor="let location of locations">{{location.title}}</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="">image Url</label>
+                            <input type="text" [(ngModel)]="carObj.imageUrl" class="form-control">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="">vehicle No</label>
+                            <input type="text" [(ngModel)]="carObj.vehicleNo" class="form-control">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label for="">Title</label>
+                            <input type="text" [(ngModel)]="carAccesoriesObj.accessoriesTitle" class="form-control">
+                        </div>
+                        <div class="col-md-3">
+                            <label for="">Website</label>
+                            <input type="checkbox" [(ngModel)]="carAccesoriesObj.showOnWebsite">
+                        </div>
+                        <div class="col-md-3">
+                            <button class="btn btn-primary" (click)="Add()">Add</button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>sr</th>
+                                        <th>Title</th>
+                                        <th>Website</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let item of carObj.ZoomCarAccessoriess; let sr=index">
+                                        <td>{{sr+1}}</td>
+                                        <td>{{item.accessoriesTitle}}</td>
+                                        <td>{{item.showOnWebsite ? 'Yes' : 'No'}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-success" (click)="saveCar()">Save car</button>
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
