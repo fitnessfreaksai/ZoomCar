@@ -306,15 +306,13 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-12">
-                            <p>Dear ZoomCar Customer Support I hope this message finds you well I am writing to express my concern and…
-                                 </p>
-                                 <p>1 Week Ago</p>
+                        <div class="col-md-12" *ngFor="let item of reviews">
+                            <p>{{item.review}}</p>
+                            <p>1 Week Ago</p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    
 </div>

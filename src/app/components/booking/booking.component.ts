@@ -13,6 +13,7 @@ export class BookingComponent {
   locationId : string = '';
   carDetails : any;
   locations : any[] = [];
+  reviews : any [] = [];
   bookingObj : any = {
     "bookingId": 0,
     "customerId": 0,
@@ -27,7 +28,7 @@ export class BookingComponent {
     "isComplete": true
   }
   loggedUserObj : any;
-  
+
   constructor(private activateRoute : ActivatedRoute, private carSrv : CarService){
     this.getAllLocations();
     this.activateRoute.params.subscribe((res:any)=>{
@@ -35,6 +36,7 @@ export class BookingComponent {
       this.locationId = res.locationId;
       this.getCarDetails();
       this.bookingObj.carId = this.carId;
+
     })
     const local = localStorage.getItem('zoomUser');
     if(local != null){
@@ -56,10 +58,14 @@ export class BookingComponent {
     this.carSrv.createNewBooking(this.bookingObj).subscribe((res:any)=>{
       if(res.result){
         alert('booking success')
-        this.bookingObj = '';
       }else{
         alert(res.message)
       }
     })
   }
+  // getReviewByCarId(){
+  //   this.carSrv.GetReviewByCarId(this.carId).subscribe((res:any)=>{
+  //     this.reviews = res.data;
+  //   })
+  // }
 }

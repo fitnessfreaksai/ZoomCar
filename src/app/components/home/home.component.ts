@@ -13,6 +13,14 @@ export class HomeComponent implements OnInit  {
   locations : any[] = [];
   fromLocation : string = '';
   toLocation : string = '';
+  reviewObj = {
+      "carRatingId": 0,
+      "carId": 0,
+      "bookingId": 0,
+      "rating": 0,
+      "reviewTitle": "string",
+      "review": "string"
+  }
   constructor(private carSrv : CarService, private router : Router){
 
   }
@@ -33,5 +41,9 @@ export class HomeComponent implements OnInit  {
   navigateToSearchPage(){
     this.router.navigate(['/search',this.fromLocation])
   }
+  // addReview(){
+  //   this.carSrv.AddReview(this.reviewObj).subscribe((res:any)=>{
+  //   })
+  // }
 
 }

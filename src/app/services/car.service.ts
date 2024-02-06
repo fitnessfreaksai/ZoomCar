@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 })
 export class CarService {
 
-  apiEndPoint : string = 'https://freeapi.miniprojectideas.com/api/ZoomCar/';
+  apiEndPoint : string = 'https://freeapi.gerasim.in/api/ZoomCar/';
   constructor(private http : HttpClient) { }
 
   registerUser(obj:any){
@@ -39,11 +39,10 @@ export class CarService {
   GetAllBookingsByCustomerId(custId : number){
     return this.http.get(this.apiEndPoint + 'GetAllBookingsByCustomerId?customerid=' + custId)
   }
-  // DeleteBookingById(obj:any, bookingId:string){
-  //   return this.http.post(this.apiEndPoint + 'DeleteBookingById?id=' + bookingId, obj)
+  // AddReview(obj:any){
+  //   return this.http.post(this.apiEndPoint + 'AddReview', obj)
   // }
-  // https://freeapi.miniprojectideas.com/api/ZoomCar/GetAllBookings
-  // https://freeapi.miniprojectideas.com/api/ZoomCar/DeleteBookingById?id=151
-  // https://freeapi.miniprojectideas.com/api/ZoomCar/GetUserByUserId?userId=195
-  // https://freeapi.miniprojectideas.com/api/ZoomCar/GetAllBookingsByCustomerId?customerid=207
+  // GetReviewByCarId(carId : string){
+  //   return this.http.get(this.apiEndPoint + 'GetAllReviewByCarId?carid=' + carId)
+  // }
 }
